@@ -1,0 +1,16 @@
+.plan {
+  position: relative;
+  text-align: center;
+  font-family: 'Consolas', monospace;
+}
+
+.label {
+  position: absolute;
+  font-size: 20px;
+}
+
+.label-below {
+  position: absolute;
+  color: white;
+  font-size: 25px;
+}
