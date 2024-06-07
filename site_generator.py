@@ -2,6 +2,7 @@ import os, shutil
 from jinja2 import Template, Environment, FileSystemLoader
 import home_assistant
 import datetime
+from zoneinfo import ZoneInfo
 
 class SiteGenerator(object):
     def __init__(self):
@@ -35,7 +36,7 @@ class SiteGenerator(object):
                 termostat_warsztat=home_assistant.get_entity_state("sensor.termostat_warsztatowy_cnc_air_temperature_2")["state"],
                 termostat_cowork=home_assistant.get_entity_state("sensor.termostat_cowork_air_temperature")["state"],
                 people_hackerspace=home_assistant.get_entity_state("sensor.people_in_hackerspace")["state"],
-                report_date=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                report_date=datetime.datetime.now(ZoneInfo('Europe/Warsaw')).strftime('%Y-%m-%d %H:%M:%S')
             )
             file.write(html)
 
