@@ -3,8 +3,12 @@ name: Update website
 
 on:
   # Runs on pushes targeting the default branch
-  push:
+  pull_request:
     branches: ["main"]
+  
+  schedule:
+    # Runs on UTC time so + 2 h for Warsaw
+    - cron: '*/15 5-18 * * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -31,6 +35,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          # Push to protected branch
+          token: ${{ secrets.PAT }}
           # Fetch all commits instead of a single, top one
           fetch-depth: 0
       - name: Set up Python
@@ -47,5 +53,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Update website
+          push_options: --force
           branch: main
           file_pattern: 'index.html public/*'
