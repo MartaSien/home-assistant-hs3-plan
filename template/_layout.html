@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html>
-    <header>
-        <title>{{ title }}</title>
+    <head>
+        <title>HS3 Home Assistant</title>
         <link rel="stylesheet" href="public/static/css/style.css">
-    </header>
+    </head>
     <body>
         <div class="plan">
-            <img src="public/static/hs3-widok-z-gory.png" alt="hs3-plan" style="width:1500px;">
-            <div class="label" style="bottom:270px;left:330px">{{ termostat_warsztat }} °C</div>
-            <div class="label" style="bottom:270px;left:600px">{{ termostat_cowork }} °C</div>
-            <div class="label" style="bottom:290px;left:1090px">{{ people_hackerspace }}</div>
+            <img src="{{ plan }}" alt="hs3-plan" style="width:1500px;">
+            {% for item in entities %}
+                <div class="label" style="{{ item[0] }}">{{ item[1] }}</div>
+            {% endfor %}
             <div class="label-below" style="bottom: 25px;left: 800px;">{{ report_date }}</div>
           </div>
     </body>
-    
 </html>

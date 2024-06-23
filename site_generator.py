@@ -30,16 +30,15 @@ class SiteGenerator(object):
         """Render the main webpage."""
         print("Rendering page to static file.")
         template = self.env.get_template("_layout.html")
+        space_state = home_assistant.get_entity_state("binary_sensor.space")
+        if (space_state):
+            plan_source = "public/static/hs3-widok-z-gory.png"
+        else:
+            plan_source = "public/static/hs3-widok-z-gory-off.png"
         with open("index.html", "w+", encoding='utf-8') as file:
             html = template.render(
-                title="HS3 Home Assistant",
-                termostat_warsztat=home_assistant.get_entity_state("sensor.termostat_warsztatowy_cnc_air_temperature_2")["state"],
-                termostat_cowork=home_assistant.get_entity_state("sensor.termostat_cowork_air_temperature")["state"],
-                people_hackerspace=home_assistant.get_entity_state("sensor.people_in_hackerspace")["state"],
+                plan = plan_source,
+                entities=home_assistant.get_entity_state_list(),
                 report_date=datetime.datetime.now(ZoneInfo('Europe/Warsaw')).strftime('%Y-%m-%d %H:%M:%S')
             )
             file.write(html)
-
-
-if __name__ == "__main__":
-    SiteGenerator()
