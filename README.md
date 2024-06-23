@@ -4,3 +4,7 @@ Prepares a static website with the current state of [Hackerspace Trojmiasto](htt
 
 You can see the live website here:
 https://martasien.github.io/home-assistant-hs3-plan/
+
+## Very scientific website generator architecture scheme
+
+![alt text](docs/website_generator_scheme.svg)
