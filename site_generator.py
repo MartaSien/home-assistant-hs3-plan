@@ -31,10 +31,10 @@ class SiteGenerator(object):
         print("Rendering page to static file.")
         template = self.env.get_template("_layout.html")
         space_state = home_assistant.get_entity_state("binary_sensor.space")
-        if (space_state):
-            plan_source = "public/static/hs3-widok-z-gory.png"
-        else:
+        if (space_state == 'off'):
             plan_source = "public/static/hs3-widok-z-gory-off.png"
+        else:
+            plan_source = "public/static/hs3-widok-z-gory.png"
         with open("index.html", "w+", encoding='utf-8') as file:
             html = template.render(
                 plan = plan_source,
