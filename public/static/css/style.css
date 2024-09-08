@@ -1,7 +1,7 @@
 .plan {
   position: absolute;
   text-align: center;
-  font-family: 'Consolas', monospace;
+  font-family: Consolas, monospace;
   z-index: 0;
 }
 

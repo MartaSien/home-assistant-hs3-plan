@@ -2,6 +2,7 @@ import requests
 import config
 import json
 
+
 def get_headers():
     """
     Get RESTful API authentication headers.
@@ -13,6 +14,7 @@ def get_headers():
         "content-type": "application/json",
     }
     return headers
+
 
 def get_entity_state_list():
     """
@@ -31,8 +33,8 @@ def get_entity_state(entity_id):
     """
     Get state of a given entity.
     """
-    url = config.url + f'api/states/{entity_id}'
-    
+    url = config.url + f"api/states/{entity_id}"
+
     response = requests.get(url, headers=get_headers())
     if response.status_code == 200:
         json_response = json.loads(response.text)
