@@ -1,3 +1,25 @@
+html,
+body {
+  height: 100%;
+}
+
+.sketchfab-embed-wrapper {
+  height: 100%;
+}
+
+.navbar {
+  position: absolute;
+  top: 100px;
+  left: 30px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.img-btn {
+  max-width: 70px;
+}
+
 .plan {
   position: absolute;
   text-align: center;
@@ -19,7 +41,7 @@
 .logo {
   position: absolute;
   width: 100px;
-  top:15px;
-  left:15px;
+  top: 15px;
+  left: 15px;
   z-index: 1;
 }
