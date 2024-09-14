@@ -5,6 +5,7 @@ env.read_env()
 
 url = env("URL")
 token = env("TOKEN")
+sketchfab_token = env("SKETCHFAB_TOKEN")
 
 # List of entities to put on the plan with coordinates
 entities = [
