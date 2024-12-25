@@ -16,6 +16,19 @@ def get_headers():
     return headers
 
 
+def get_api_error_log():
+    """
+    
+    """
+    url =  config.url + "api/error_log"
+    response = requests.get(url, headers=get_headers(), verify=False)
+    if response.status_code == 200:
+        json_response = json.loads(response.text)
+        return json_response["state"]
+    else:
+        return None
+
+
 def get_entity_state_list():
     """
     Get a list of entity states from the config file.
@@ -35,10 +48,13 @@ def get_entity_state(entity_id):
     """
     url = config.url + f"api/states/{entity_id}"
 
-    response = requests.get(url, headers=get_headers())
+    response = requests.get(url, headers=get_headers(), verify=False)
     if response.status_code == 200:
         json_response = json.loads(response.text)
         return json_response["state"]
     else:
         print("")
         return None
+    
+if __name__ == "__main__":
+    space_state = get_api_error_log()
