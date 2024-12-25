@@ -1,4 +1,4 @@
-Jinja2==3.1.4    # https://pypi.org/project/Jinja2/
+Jinja2==3.1.5    # https://pypi.org/project/Jinja2/
 requests==2.32.3 # https://pypi.org/project/requests/
 environs==11.2.1 # https://pypi.org/project/environs/
 tzdata           # https://pypi.org/project/tzdata/ (fallback if not in default)
