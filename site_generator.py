@@ -30,7 +30,7 @@ class SiteGenerator(object):
 
     def render_mainpage(self):
         """Render the main webpage."""
-        print("Rendering page to static file.")
+        print("Rendering page to static file.\n")
         template = self.env.get_template("_layout.html")
         space_state = home_assistant.get_entity_state("binary_sensor.space")
         if space_state == "off":

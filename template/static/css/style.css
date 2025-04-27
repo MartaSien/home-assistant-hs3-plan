@@ -1,10 +1,11 @@
 html,
 body {
   height: 100%;
+  overflow: hidden;
 }
 
-.sketchfab-embed-wrapper {
-  height: 100%;
+iframe {
+  border: none;
 }
 
 .navbar {
