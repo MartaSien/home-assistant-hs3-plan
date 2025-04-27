@@ -1,9 +1,10 @@
+"""Sending requests to Home Assistant REST API"""
+import json
 import requests
 import config
-import json
 
 
-def get_headers():
+def get_headers() -> dict:
     """
     Get RESTful API authentication headers.
 
@@ -16,7 +17,7 @@ def get_headers():
     return headers
 
 
-def get_entity_state_list():
+def get_entity_state_list() -> list:
     """
     Get a list of entity states from the config file.
     """
@@ -26,19 +27,19 @@ def get_entity_state_list():
     return config.entities
 
 
-def get_entity_state(entity_id):
+def get_entity_state(entity_id: str) -> str:
     """
     Get state of a given entity.
     """
     url = config.url + f"api/states/{entity_id}"
     try:
-        response = requests.get(url, headers=get_headers())
+        response = requests.get(url, headers=get_headers(), timeout=10)
         response.raise_for_status()
         json_response = json.loads(response.text)
         print(json_response)
         if entity_id.startswith("climate"):
-            return f"{json_response["attributes"]["current_temperature"]} °C"
-        return json_response["state"]
+            return str(json_response["attributes"]["current_temperature"]) + " °C"
+        return str(json_response["state"])
     except requests.exceptions.RequestException as e:
         print(f"[{entity_id}] {e}\n")
         return "n/a"
