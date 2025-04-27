@@ -1,12 +1,16 @@
+"""Generate website with Home Assistant data."""
 import os
 import shutil
-from jinja2 import Environment, FileSystemLoader
-import home_assistant
 import datetime
 from zoneinfo import ZoneInfo
+from jinja2 import Environment, FileSystemLoader
+import home_assistant
 
 
-class SiteGenerator(object):
+class SiteGenerator():
+    """
+    Static website generator
+    """
     def __init__(self):
         self.env = Environment(loader=FileSystemLoader("template"))
         self.empty_public()
